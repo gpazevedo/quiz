@@ -7,14 +7,13 @@ The frontend is a React app that consumes a GraphQl API.
 The backend runs on AWS and provides this GraphQL API.
 
 AppSync provides a transformation layer to talk to DynamoDB,
-ElasticSearch, and other services to through custom AWS Lambdas functions.
+ElasticSearch, and other services through custom AWS Lambdas functions.
 So, with AppSync, our web service is separated into
 static files, which are coming out of Amazon S3
 and optionally through CloudFront, and GraphQL Queries,
 which are the API calls to the service.
 Those hit AppSync, and then, AppSync has Resolvers that
 take the GraphQL Queries and hit the correct backends.
-So, we can have RDS file Lambda.
 We can use ElasticSearch if we want to provide
 search features like searching over information
 about images, searching for other users, that sort of thing,
@@ -44,43 +43,38 @@ The Resolver reformats it, sends it to AppSync,
 and then AppSync sends that data to our user application,
 and the only custom thing that we are writing here is the DynamoDB schema
 and the Velocity Template Language Resolver.
-Everything else, AppSync is providing for us,
-so we're going to save a ton of work by not writing
-all this extra code.
+Everything else, AppSync is providing for us.
 
 ### Backend
-AWS Mobile is a bunch of tools including command line tools, 
-client SDKs and the UI components that helps us 
+AWS Mobile is a bunch of tools including command-line tools, 
+client SDKs and the UI components that help us 
 build apps for mobile, web, IoT, chat, all kinds of things.
 
 AWS Amplify is the CLI to deploy our application,
-and help us create our AWS resources like our apps and KPIs.
+and help us create our AWS resources.
 
 Cognito includes social auth, it will provide credentials to social logins,
 to access AWS services like DynamoDB or AppSync.
-And it also has features for storing users itself.
+And it also has features for storing users.
 So we can have our own user of parole Incognito,
 and they can set passwords and everything like that.
-It even gives us tools to provide two factor authentication.
+It even gives us the tools to provide two-factor authentication
+and UI components to deal with login for our app.
 
-AWS AppSync is sort of categorized under AWS mobile
-but it provides data source integrations and lets we build Graph Ql backend,
-and it also lets we do custom code through AWS Lambda.
+AWS AppSync provides data source integrations allowing us to build GraphQL backend,
+and it also lets us do custom code through AWS Lambda.
 
 Lambda runs serverless functions on demand.
-Cognito, which has user management capabilities,
-password management, two factor auth optionally,
-and even UI components to deal with login for our app.
 
 API Gateway which lets we build HTTPS APIs
 and layers between our web app and Lambda functions.
 
-AppSync is a higher level way to deal with similar things the API Gateway does,
-but through Graph Ql.
+AppSync is a higher-level way to deal with similar things the API Gateway does,
+but through GraphQL.
 
-DynamoDB, is a no SQL data store.
+DynamoDB is a no SQL data store.
 
-SNS pinpoint for those asynchronous interactions with our users.
+SNS pinpoints for those asynchronous interactions with our users.
 When something happens and we want to text them
 or send a push notification, we will be using SNS
 or Pinpoint to get that message to their device.
@@ -93,18 +87,18 @@ It has all of the imports for Amplifying React libraries, including the authenti
 And it also imports the custom components that we built,
 and wraps the whole app in that authenticator component.
 
-The interaction with the GraphQL API is done throught the AWS Amplify.
-AWS Amplify permits that my React app uses the GraphQL API, exactly the same way,
+The interaction with the GraphQL API is done through the AWS Amplify.
+AWS Amplify permits that my React app uses the GraphQL API, the same way,
 when it is running locally or running inside AWS. 
 
 In our app, we have five components, we have QuizPicker, Quizzes,
-which contain Questions of course, Quizinput, and QuestionForm.
+which contain Questions, Quizinput, and QuestionForm.
 
-QuizPicker is a drop down for selecting Quizzes.
+QuizPicker is a drop-down for selecting Quizzes.
 A Quiz is a collection of Questions and it records what Questions have been answered.
-A Question is a single question and allows users to select the answer for that question.
+A Question is a single question and allows users to select its answer.
 The Quizinput renders the form for adding a Question and submits that input to AppSync.
-And the QuestionForm is just the form layout and has the ability to record data
+And the QuestionForm is just the form layout and can record data
 and it submits that data back up to Quizinput when quiz input asks for it.
 
 Amplify provides the Connect component.
@@ -116,7 +110,7 @@ So it asynchronously will make API calls to AppSync
 using the authentication credentials
 and bring that data back to us
 
-The same app runs locally and on AWS:
+The app runs locally and on AWS:
 
 http://quizbiz-20200620203655-hostingbucket-dev.s3-website-us-east-1.amazonaws.com/
 
