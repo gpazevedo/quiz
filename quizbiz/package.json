@@ -6,7 +6,7 @@
     "async-retry": "^1.2.3",
     "aws-amplify": "^1.1.7",
     "aws-amplify-react": "^2.1.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.0.5",
